@@ -7,12 +7,15 @@ const mailSender = async (email, title, body) => {
                 auth:{
                     user: process.env.MAIL_USER,
                     pass: process.env.MAIL_PASS,
-                }
+                },
+                tls: {
+                    rejectUnauthorized: false, // Add this to ignore self-signed certificates
+                },
             })
 
 
             let info = await transporter.sendMail({
-                from: `"StudyNotion || -by Bhavesh Ranjan" <${process.env.MAIL_USER}>`,
+                from: `"StudyNotion || -by Harshita Garg" <${process.env.MAIL_USER}>`,
                 to:`${email}`,
                 subject: `${title}`,
                 html: `${body}`,
